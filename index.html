@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Dark and Darker damage calculator</title>
+        <link rel="stylesheet" href="index.css"/>
+        <script src ="index.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div id="DaD-header">
+            <h1>DaD Damage Calculator</h1>
+        </div>
+        <div id="class-container" class="container">
+            <h3>Race, Class, and Character</h3>
+            <div class="dropdowns">
+                <label>Select Your Class</Label>
+                <select id="class-dropdown" >
+                    <option value = -1>Select your class</option>
+                    <option value = 0 >Fighter</option>
+                    <option value = 1>Barbarian</option>
+                    <option value = 2>Rogue</option>
+                    <option value = 3>Ranger</option>
+                    <option value = 4>Wizard (magic coming soon)</option>
+                    <option value = 5>Cleric (magic coming soon)</option>
+                    <option value = 6>Bard (magic coming soon)</option>
+                    <option value = 7>Warlock (magic coming soon)</option>
+                </select> 
+            </div>
+            <div class="dropdowns">
+                <label>Select Your Race</label>
+                <select id="race-dropdown" >
+                    <option value="a">Human</option>
+                    <option value="b">Orc</option>
+                    <option value="c">Elf</option>
+                    <option value="d">Skeleton</option>
+                </select>
+            </div>
+            <div>
+                <label>Saved Characters</label>
+            </div>
+        </div>
+        <div id="perk-container" class="container">
+            <h3>Pick your Perks/Skills</h3>
+            <div>
+                <h4>Perks</h4>
+            </div>
+            <div>
+                <h4>Skills</h4>
+            </div>
+            
+        </div>
+        <div id="weapon-container" class="container">
+            <h3>Pick your weapon</h3>
+            <div id="weapon-display"></div>
+        </div>
+        <div class="container">
+            <h3>Enter your stats</h3>
+            <form id="stats-form">
+                <div class="stat-input">
+                    <label>Base Weapon Damage</label>
+                    <input id="BaseWepDmg" value=0 />
+                </div>
+                <div class="stat-input">
+                    <label>+ Strength</label>
+                    <input id="+Str" value=0 />
+                </div>
+                <div class="stat-input">
+                    <label>+ All Atributes</label>
+                    <input id="+All" value=0 />
+                </div>
+                <div class="stat-input">
+                    <label>+ Physical Power</label>
+                    <input id="+PhysPow" value=0 />
+                </div>
+                <div class="stat-input">
+                    <label>+ Physical Damage %</label>
+                    <input id="+PhysDmg" value=0 />
+                </div>
+                <div class="stat-input">
+                    <label>+ Weapon Damage</label>
+                    <input id="+WepDmg" value=0 />
+                </div>
+                <div class="stat-input">
+                    <label>Aditional Physical Damage</label>
+                    <input id="AddPhysDmg" value=0 />
+                </div>
+                
+                <div class="stat-input">
+                    <label>True Physical Damage</label>
+                    <input id="TruePhysDmg" value=0 />
+                </div>
+                <div class="stat-input">
+                    <label>Armor Penetration</label>
+                    <input id="ArmorPen" value=0 />
+                </div>
+                <h4>Target's Stats</h4>
+                <div class="stat-input">
+                    <label>Armor</label>
+                    <input id="Armor" value=0 />
+                </div>
+                <div class="stat-input">
+                    <label>Physical Damage Reduction</label>
+                    <input id="PhysDmgRed" value=0 />
+                </div>
+
+            </form>
+        </div>
+        <div class="container">
+            <h3>Damage to target</h3>
+            <div id="weapon-zones"></div>
+        </div>
+    </body>
+</html>

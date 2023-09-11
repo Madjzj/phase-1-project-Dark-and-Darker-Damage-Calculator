@@ -1,0 +1,48 @@
+.container{
+    width: 20%;
+    float: left;
+    height: 93vh;
+    text-align: center;
+    outline: auto;
+}
+#DaD-header{
+    text-align: center;
+    color:gold;
+}
+body{
+    height: 95vh;
+    background-image: linear-gradient(to bottom, grey, white);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.dropdowns{
+    padding: 10px;
+}
+#stats-form{
+    display: flex;
+    flex-direction: column;
+}
+.stat-input{
+    padding:5px;
+}
+.weapon{
+    width: 100%;
+    display:flex;
+    align-items: center;
+}
+#weapon-display{
+    height: 95.8%;
+    width: 100%;
+    overflow: auto;
+}
+#weapon-zones{
+    display:flex;
+}
+#zone-ratios{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+#ratio{
+    padding:10%
+}
