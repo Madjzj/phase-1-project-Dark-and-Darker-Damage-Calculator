@@ -8,7 +8,7 @@
     </head>
     <body>
         <div id="DaD-header">
-            <h1>DaD Damage Calculator</h1>
+            <h1>Melee DaD Damage Calculator</h1>
         </div>
         <div id="class-container" class="container">
             <h3>Race, Class, and Character</h3>
@@ -53,7 +53,7 @@
             <h3>Pick your weapon</h3>
             <div id="weapon-display"></div>
         </div>
-        <div class="container">
+        <div id="stat-container" class="container">
             <h3>Enter your stats</h3>
             <form id="stats-form">
                 <div class="stat-input">
@@ -102,12 +102,15 @@
                     <label>Physical Damage Reduction</label>
                     <input id="PhysDmgRed" value=0 />
                 </div>
-
+                <div>
+                    <button id="calculate">Calculate</button>
+                </div>
             </form>
         </div>
-        <div class="container">
+        <div id= "damage-container" class="container">
             <h3>Damage to target</h3>
             <div id="weapon-zones"></div>
+            <div id="attacks and damage"></div>
         </div>
     </body>
 </html>

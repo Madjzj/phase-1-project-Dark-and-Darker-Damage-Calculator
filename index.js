@@ -17,6 +17,23 @@ function populateWeapon(obj){
     weapon.appendChild(radBtn);
     return weapon;
 }
+function createBodyDropdown(){
+    const bodyDropdown = document.createElement("select")
+    const head = document.createElement("option")
+    const torso = document.createElement("option")
+    const limb = document.createElement("option")
+    head.textContent = "Head"
+    torso.textContent = "Torso"
+    limb.textContent = "Limb"
+    head.value = 1.5
+    torso.value = 1
+    limb.value = .5
+    bodyDropdown.id = "body-dropdown"
+    bodyDropdown.appendChild(head)
+    bodyDropdown.appendChild(torso)
+    bodyDropdown.appendChild(limb)
+    return bodyDropdown
+}
 document.addEventListener('DOMContentLoaded',()=>{
     const classArray = [
         {
@@ -101,7 +118,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             class:["Fighter","Barbarian","Warlock"],
             attacks:[100,105,110],
             attacks2:[115],
-            zones:[100,80,60],
+            zones:[100,80],
             zoneImage: "https://darkanddarker.wiki.spellsandguns.com/images/thumb/3/3c/Zweihander_Hitbox.png/74px-Zweihander_Hitbox.png"
         },
         {weapon:"Flanged Mace",
@@ -145,7 +162,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/d/d6/Kris_Dagger_2.png/60px-Kris_Dagger_2.png",
             class:["Rogue"],
             type:"Dagger",
-            attacks:[100,110,110,110],
+            attacks:[100,105,105,105],
             zones:[100],
             zoneImage: "https://darkanddarker.wiki.spellsandguns.com/images/0/00/Kris_Dagger_Hitbox.png"
         },
@@ -257,7 +274,6 @@ document.addEventListener('DOMContentLoaded',()=>{
         }else{
             className = "N/A"
         }
-        console.log(className);
         while(weapons.firstChild){
             weapons.removeChild(weapons.firstChild)
         }
@@ -267,6 +283,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             }
         }
         weapons.addEventListener("change",(event)=>{
+            
             if(event.target.type === "radio"){
                 const selectedWeapon = weaponsObjects.find((element)=> element.weapon === event.target.value);
                 const weaponZones=document.querySelector("#weapon-zones");
@@ -281,28 +298,45 @@ document.addEventListener('DOMContentLoaded',()=>{
                 image.style.outline = "auto"
                 const zoneRatios = document.createElement("div")
                 zoneRatios.id = "zone-ratios"
+                const sweetSpotDropdown = document.createElement("select")
                 x = 0;
                 for(const zone of selectedWeapon.zones){
-                    label = document.createElement("label")
-                    
+                    const label = document.createElement("label")
+                    const option = document.createElement("option")
                     if(x === 0){
                         label.textContent = "the green zone does " + zone + "% damage"
                         label.style.color = "green";
-                    }
+                        option.value = zone
+                        option.textContent = "Green"
+                        console.log(zone)                    }
                     if(x === 1){
                         label.textContent = "the orange zone does " + zone + "% damage"
                         label.style.color = "orange";
+                        option.value = zone
+                        option.textContent = "Orange"
+
                     }
                     if(x === 2){
                         label.textContent = "the red zone does " + zone + "% damage"
                         label.style.color = "red";
+                        option.value = zone
+                        option.textContent = "Red"
+
                     }
                     x++;
                     label.id = "ratio"
+                    sweetSpotDropdown.appendChild(option)
                     zoneRatios.appendChild(label)
                 }
+                const divider = document.createElement("div")
+                const sweetSpotLabel = document.createElement("label")
+                sweetSpotLabel.textContent = "where are you hitting"
                 weaponZones.appendChild(zoneRatios)
-                
+                divider.appendChild(sweetSpotLabel)
+                divider.appendChild(sweetSpotDropdown)
+                divider.appendChild(createBodyDropdown())
+                divider.id="sweetspot-dropdown"
+                weaponZones.appendChild(divider)
             }
         })
     })
