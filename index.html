@@ -29,10 +29,10 @@
             <div class="dropdowns">
                 <label>Select Your Race</label>
                 <select id="race-dropdown" >
-                    <option value="a">Human</option>
-                    <option value="b">Orc</option>
-                    <option value="c">Elf</option>
-                    <option value="d">Skeleton</option>
+                    <option value= 0>Human</option>
+                    <option value= 1>Orc</option>
+                    <option value= -1>Elf</option>
+                    <option value= 0>Skeleton</option>
                 </select>
             </div>
             <div>
@@ -103,14 +103,14 @@
                     <input id="PhysDmgRed" value=0 />
                 </div>
                 <div>
-                    <button id="calculate">Calculate</button>
+                    <button id="calculate" type="submit">Calculate</button>
                 </div>
             </form>
         </div>
         <div id= "damage-container" class="container">
             <h3>Damage to target</h3>
             <div id="weapon-zones"></div>
-            <div id="attacks and damage"></div>
+            <div id="attacks-damage"></div>
         </div>
     </body>
 </html>

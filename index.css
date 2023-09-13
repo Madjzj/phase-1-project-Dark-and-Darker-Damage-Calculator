@@ -3,7 +3,6 @@
     float: left;
     height: 93vh;
     text-align: center;
-    outline: auto;
 }
 #DaD-header{
     text-align: center;
@@ -31,7 +30,7 @@ body{
     align-items: center;
 }
 #weapon-display{
-    height: 95.8%;
+    height: 95%;
     width: 100%;
     overflow: auto;
 }
@@ -48,7 +47,7 @@ body{
     margin-bottom: auto;
     width:60%;
 }
-#sweetspot-dropdown{
+#sweetspot-divider{
     height: fit-content;
     margin-top: auto;
     margin-bottom: auto;
