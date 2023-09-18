@@ -319,7 +319,22 @@ document.addEventListener('DOMContentLoaded',()=>{
             attacks:[100,105,110],
             zones:[100,80],
             zoneImage:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/4/45/Magic_Staff_Hitbox.png/41px-Magic_Staff_Hitbox.png"
+        },
+        {weapon:"Lute",
+        image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/f/fa/Lute_2.png/60px-Lute_2.png",
+        class:["Bard"],
+        attacks:[100,100],
+        zones:[100,90],
+        zoneImage:"https://darkanddarker.wiki.spellsandguns.com/images/a/a2/Lute_Hitbox.png"
+        },
+        {weapon:"Flute",
+        image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/5/5d/Flute_2.png/60px-Flute_2.png",
+        class:["Bard"],
+        attacks:[110],
+        zones:[100],
+        zoneImage:"https://darkanddarker.wiki.spellsandguns.com/images/2/25/Flute_Hitbox.png"
         }
+
     ];
     const perks = {
         "FighterPerks":[
@@ -420,8 +435,8 @@ document.addEventListener('DOMContentLoaded',()=>{
             {name:"Two-Hander",
             image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/8/8f/Perk_Two_Handed_Weapon_Expert.png/96px-Perk_Two_Handed_Weapon_Expert.png",
             buff:true,
-            physBonus:5%
-            }
+            physBonus:5
+        }
         ],
         "RoguePerks":[
             {name:"Ambush",
@@ -491,200 +506,202 @@ document.addEventListener('DOMContentLoaded',()=>{
             }
         ],
         "RangerPerks":[
-            {name:"",
-            image:"",
+            {name:"Crippling Shot",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/0/01/Perk_Crippling_Shot.png/96px-Perk_Crippling_Shot.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Crossbow Mastery",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/a/a3/Perk_Crossbow_Mastery.png/96px-Perk_Crossbow_Mastery.png",
+            buff:false,
+            },
+            {name:"Enhanced Hearing",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/0/02/Perk_Enhanced_Hearing.png/96px-Perk_Enhanced_Hearing.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Kinesthesia",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/1/1b/Perk_Kinesthesia.png/96px-Perk_Kinesthesia.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Numble Hands",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/b/b6/Perk_Nimble_Hands.png/96px-Perk_Nimble_Hands.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Quick Reload",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/0/09/Perk_Quick_Reload.png/96px-Perk_Quick_Reload.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Ranged Weapon Mastery",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/1/1b/Perk_Ranged_Weapons_Expert.png/96px-Perk_Ranged_Weapons_Expert.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Sharpshooter",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/1/1e/Perk_Sharpshooter.png/96px-Perk_Sharpshooter.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Spear Proficiency",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/d/d9/Perk_Spear_Proficiency.png/96px-Perk_Spear_Proficiency.png",
+            buff:true,
+            physBonus:10
+            },
+            {name:"Chase",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/7/7b/Perk_Tracking.png/96px-Perk_Tracking.png",
             buff:false
             },
-            {name:"",
-            image:"",
-            buff:false
-            },
-            {name:"",
-            image:"",
-            buff:false
-            },
-            {name:"",
-            image:"",
+            {name:"Trap Mastery",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/8/87/Perk_Trap_Expert.png/96px-Perk_Trap_Expert.png",
             buff:false
             }
         ],
         "WizardPerks":[
-            {name:"",
-            image:"",
+            {name:"Arcane Feedback",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/7/79/Perk_Arcane_Feedback.png/96px-Perk_Arcane_Feedback.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Arcane Mastery",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/9/90/Perk_Arcane_Mastery.png/96px-Perk_Arcane_Mastery.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Fire Mastery",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/e/e7/Perk_Fire_Mastery.png/96px-Perk_Fire_Mastery.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Ice Shield",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/1/1a/Perk_Ice_Shield.png/96px-Perk_Ice_Shield.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Mana Surge",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/2/24/Perk_Mana_Surge.png/96px-Perk_Mana_Surge.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Melt",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/e/e0/Perk_Melt.png/96px-Perk_Melt.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Quick Chant",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/a/a7/Perk_Quick_Chant.png/96px-Perk_Quick_Chant.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Reactive Shield",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/c/c2/Perk_Reactive_Shield.png/96px-Perk_Reactive_Shield.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Sage",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/b/b6/Perk_Sage.png/96px-Perk_Sage.png",
             buff:false
             }
         ],
         "ClericPerks":[
-            {name:"",
-            image:"",
+            {name:"Advanced Healer",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/0/08/Perk_Advanced_Healer.png/96px-Perk_Advanced_Healer.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Blunt Weapon Mastery",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/2/27/Perk_Blunt_Weapon_Mastery.png/96px-Perk_Blunt_Weapon_Mastery.png",
+            buff:true,
+            physBonus:10
+            },
+            {name:"Brewmaster",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/5/5d/Perk_Brewmaster.png/96px-Perk_Brewmaster.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Holy Aura",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/3/32/Perk_Holy_Aura.png/96px-Perk_Holy_Aura.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Kindness",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/d/d7/Perk_Kindness.png/96px-Perk_Kindness.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Perseverance",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/3/36/Perk_Perseverance.png/96px-Perk_Perseverance.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Protection from Evil",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/c/c2/Perk_Protection_from_Evil.png/96px-Perk_Protection_from_Evil.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Requiem",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/7/73/Perk_Requiem.png/96px-Perk_Requiem.png",
             buff:false
             },
-            {name:"",
-            image:"",
-            buff:false
-            },
-            {name:"",
-            image:"",
+            {name:"Undead Slaying",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/2/29/Perk_Undead_Slaying.png/96px-Perk_Undead_Slaying.png",
             buff:false
             }
         ],
         "BardPerks":[
-            {name:"",
-            image:"",
+            {name:"Charismatic Preformance",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/c/cb/Perk_Charismatic_Performance.png/96px-Perk_Charismatic_Performance.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Dancing Feet",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/2/2a/Perk_Dancing_Feet.png/96px-Perk_Dancing_Feet.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Lore Master",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/9/9a/Perk_Jolly_Time.png/96px-Perk_Jolly_Time.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Lore Mastery",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/3/32/Perk_Lore_Mastery.png/96px-Perk_Lore_Mastery.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Melodic Protection",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/1/12/Perk_Melodic_Protection.png/96px-Perk_Melodic_Protection.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Rapier Mastery",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/e/e8/Perk_Rapier_Mastery.png/96px-Perk_Rapier_Mastery.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Reinforced Instruments",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/6/61/Perk_Reinforced_Instruments.png/96px-Perk_Reinforced_Instruments.png",
+            buff:true
+            },
+            {name:"Story Teller",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/d/d6/Perk_Story_Teller.png/96px-Perk_Story_Teller.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Superior Dexterity",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/e/e8/Perk_Superior_Dexterity.png/96px-Perk_Superior_Dexterity.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Wanderer's Luck",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/1/16/Perk_Wanderers_Luck.png/96px-Perk_Wanderers_Luck.png",
             buff:false
             },
-            {name:"",
-            image:"",
-            buff:false
-            },
-            {name:"",
-            image:"",
+            {name:"War Song",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/6/63/Perk_War_Song.png/96px-Perk_War_Song.png",
             buff:false
             }
         ],
         "WarlockPerks":[
-            {name:"",
-            image:"",
+            {name:"Antimagic",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/2/2b/Perk_Antimagic.png/96px-Perk_Antimagic.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Dark Enhancement",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/8/83/Perk_Dark_Enhancement.png/96px-Perk_Dark_Enhancement.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Dark Reflection",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/7/74/Perk_Dark_Reflection.png/96px-Perk_Dark_Reflection.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Immortal Lament",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/1/1b/Perk_Immortal_Lament.png/96px-Perk_Immortal_Lament.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Malice",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/c/c1/Perk_Malice.png/96px-Perk_Malice.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Soul Collector",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/7/75/Perk_Soul_Collector.png/96px-Perk_Soul_Collector.png",
             buff:false
             },
-            {name:"",
-            image:"",
+            {name:"Torture Mastery",
+            image:"https://darkanddarker.wiki.spellsandguns.com/images/thumb/9/93/Perk_Torture_Mastery.png/96px-Perk_Torture_Mastery.png",
             buff:false
             }
         ]
@@ -792,7 +809,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             const physPercent = ((calculatePhysPercent(powerBonus)) + Number(event.target[4].value))/100;
             const sweetspot = Number(document.querySelector("#sweetspot-dropdown").value)/100
             const physReduction = (calculatePhysReduction(Number(event.target[9].value),Number(event.target[10].value)))/100
-            const armorPen = (Number(event.target[8].value))
+            const armorPen = (Number(event.target[8].value))/100.0
             const trueDmg = Number(event.target[7].value)
             const divineStrike = 0;
             const buff = 0;
