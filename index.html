@@ -10,34 +10,48 @@
         <div id="DaD-header">
             <h1>Melee DaD Damage Calculator</h1>
         </div>
+        <!--<form id="char-creation">-->
         <div id="class-container" class="container">
             <h3>Race, Class, and Character</h3>
-            <div class="dropdowns">
-                <label>Select Your Class</Label>
-                <select id="class-dropdown" >
-                    <option value = -1>Select your class</option>
-                    <option value = 0 >Fighter</option>
-                    <option value = 1>Barbarian</option>
-                    <option value = 2>Rogue</option>
-                    <option value = 3>Ranger</option>
-                    <option value = 4>Wizard (magic coming soon)</option>
-                    <option value = 5>Cleric (magic coming soon)</option>
-                    <option value = 6>Bard (magic coming soon)</option>
-                    <option value = 7>Warlock (magic coming soon)</option>
-                </select> 
-            </div>
-            <div class="dropdowns">
-                <label>Select Your Race</label>
-                <select id="race-dropdown" >
-                    <option value= 0>Human</option>
-                    <option value= 1>Orc</option>
-                    <option value= -1>Elf</option>
-                    <option value= 0>Skeleton</option>
-                </select>
-            </div>
-            <div>
-                <label>Saved Characters</label>
-            </div>
+    
+                <div class="character-creation">
+                    <label>Select Your Class</Label>
+                    <select id="class-dropdown" >
+                        <option value = -1>Select your class</option>
+                        <option value = 0 >Fighter</option>
+                        <option value = 1>Barbarian</option>
+                        <option value = 2>Rogue</option>
+                        <option value = 3>Ranger</option>
+                        <option value = 4>Wizard (magic coming soon)</option>
+                        <option value = 5>Cleric (magic coming soon)</option>
+                        <option value = 6>Bard (magic coming soon)</option>
+                        <option value = 7>Warlock (magic coming soon)</option>
+                    </select> 
+                </div>
+                <div class="character-creation">
+                    <label>Select Your Race</label>
+                    <select id="race-dropdown" >
+                        <option value= 0>Human</option>
+                        <option value= 1>Orc</option>
+                        <option value= -1>Elf</option>
+                        <option value= 0>Skeleton</option>
+                    </select>
+                </div>
+                <div>
+                    <div class="character-creation">
+                        <label>Character Name</label>
+                        <input/>
+                    </div>
+                    <div class="character-creation">
+                        <label>Image Adress</label>
+                        <input/>
+                    </div>
+                    <div class="character-creation">
+                        <button id="create-char" type="submit">Submit</button>
+                        <button id="patch-char" type="submit">Patch</button>
+                    </div>
+                    <label>Saved Characters</label>
+                </div>
         </div>
         <div id="weapon-container" class="container">
             <h3>Pick your weapon</h3>
@@ -97,6 +111,7 @@
                 </div>
             </form>
         </div>
+         <!--</form>-->
         <div id= "damage-container" class="container">
             <h3>Damage to target</h3>
             <div id="weapon-zones"></div>

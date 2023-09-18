@@ -1,7 +1,7 @@
 .container{
     width: 25%;
     float: left;
-    height: 93vh;
+    height: 93%;
     text-align: center;
 }
 #DaD-header{
@@ -14,8 +14,8 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
 }
-.dropdowns{
-    padding: 10px;
+.character-creation{
+    padding: 5px;
 }
 #stats-form{
     display: flex;
