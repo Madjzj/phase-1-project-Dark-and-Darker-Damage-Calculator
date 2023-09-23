@@ -431,7 +431,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             //The formula is ((((((Base Weapon/Magical Damage + "Buff" Weapon Damage) * Combo Bonus * Impact Zone Bonus) + "Gear" Weapon Damage/Magical Damage + Divine Strike Damage) * (1 + Power Bonus)) + Additional Damage) * (1 + Hit Location Bonus) * (1 - (Damage Reduction * (1 - Penetration))) * (1 - Projectile Reduction)) + True Damage
             const baseWepDmg = Number(event.target[0].value);
             const bonusWepDmg = Number(event.target[5].value);
-            const powerBonus = Number(event.target[1].value)+Number(event.target[2].value)+Number(event.target[3].value)+classArray[selectedClass].stats[0]+Number(document.querySelector("#race-dropdown").value)
+            const powerBonus = Number(event.target[1].value)+Number(event.target[2].value)+Number(event.target[3].value)+classArray[selectedClass].stats[0]+Number(document.querySelector("#race-dropdown").name)
             const addDmg = Number(event.target[6].value);
             const hitLocation = Number(document.querySelector("#body-dropdown").value);
             const physPercent = ((calculatePhysPercent(powerBonus)) + Number(event.target[4].value))/100;
@@ -468,10 +468,30 @@ document.addEventListener('DOMContentLoaded',()=>{
             }
         }
     });
-    const charForm = document.querySelector("#char-creation")
 
+    const charForm = document.querySelector("#char-creation")
     charForm.addEventListener('submit',(event)=>{
         event.preventDefault();
         console.log(event)
+        if(event.target[0].value === "-1"){
+            alert("Please choose a class before trying to edit or create a character")
+        }else if(event.submitter.value === "create"){
+            fetch('http://127.0.0.1:3000/characters',{
+                method:'POST',
+                headers:{
+                    "Content-Type":"application/json",
+                    Accept:"application/json"
+                },
+                body:JSON.stringify({
+                    name:event.target[2].value,
+                    image:event.target[3].value,
+                    race:event.target[1].value,
+                    class:event.target[0].value,
+                    weapon
+                })
+            })
+        }else if(event.submitter.value === "patch"){
+            
+        }
     })
 });

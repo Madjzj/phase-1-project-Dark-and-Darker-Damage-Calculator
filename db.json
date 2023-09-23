@@ -1,3 +1,11 @@
 {
-    
+  "characters": [
+    {
+      "name": "Madjzj",
+      "image": "https://www.d20pfsrd.com/wp-content/uploads/sites/12/2017/01/rogue__comm_by_yamaorce-d88oizc-320-2.png",
+      "race": "1",
+      "class": "2",
+      "id": 1
+    }
+  ]
 }
