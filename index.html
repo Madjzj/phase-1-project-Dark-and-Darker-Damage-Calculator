@@ -31,24 +31,24 @@
                 <div class="character-creation">
                     <label>Select Your Race</label>
                     <select id="race-dropdown" >
-                        <option value= 0>Human</option>
-                        <option value= 1>Orc</option>
-                        <option value= -1>Elf</option>
-                        <option value= 0>Skeleton</option>
+                        <option value=0 name=0>Human</option>
+                        <option value=1 name=1>Orc</option>
+                        <option value=2 name=-1>Elf</option>
+                        <option value=3 name=0>Skeleton</option>
                     </select>
                 </div>
                 <div>
                     <div class="character-creation">
                         <label>Character Name</label>
-                        <input/>
+                        <input id="char-name"/>
                     </div>
                     <div class="character-creation">
-                        <label>Image Adress</label>
-                        <input/>
+                        <label>Image Address</label>
+                        <input id="char-picture"/>
                     </div>
                     <div class="character-creation">
-                        <button id="create-char" type="submit">Submit</button>
-                        <button id="patch-char" type="submit">Patch</button>
+                        <button id="create-char" type="submit" value="create">Submit</button>
+                        <button id="patch-char" type="submit" value="patch">Patch</button>
                     </div>
                 </form>
                     <label>Saved Characters</label>
