@@ -472,10 +472,14 @@ document.addEventListener('DOMContentLoaded',()=>{
     const charForm = document.querySelector("#char-creation")
     charForm.addEventListener('submit',(event)=>{
         event.preventDefault();
+        const weapon = document.querySelector('input[name="weapon"]:checked')
         console.log(event)
         if(event.target[0].value === "-1"){
             alert("Please choose a class before trying to edit or create a character")
+        }else if(!weapon){
+            alert("Please select a weapon before trying to edit or create a character")
         }else if(event.submitter.value === "create"){
+            const characterStats = calcForm.querySelectorAll('input')
             fetch('http://127.0.0.1:3000/characters',{
                 method:'POST',
                 headers:{
@@ -487,7 +491,8 @@ document.addEventListener('DOMContentLoaded',()=>{
                     image:event.target[3].value,
                     race:event.target[1].value,
                     class:event.target[0].value,
-                    weapon
+                    weapon:weaponsObjects.find((element)=> element.weapon === weapon.value),
+                    stats:characterStats
                 })
             })
         }else if(event.submitter.value === "patch"){
