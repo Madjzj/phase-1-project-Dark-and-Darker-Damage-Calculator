@@ -2,9 +2,23 @@
   "characters": [
     {
       "name": "Madjzj",
-      "image": "https://www.d20pfsrd.com/wp-content/uploads/sites/12/2017/01/rogue__comm_by_yamaorce-d88oizc-320-2.png",
+      "image":"https://darkanddarker.wiki.spellsandguns.com/images/2/22/Rogues.png",
       "race": "1",
       "class": "2",
+      "weapon": "Castillon Dagger",
+      "stats": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
       "id": 1
     }
   ]

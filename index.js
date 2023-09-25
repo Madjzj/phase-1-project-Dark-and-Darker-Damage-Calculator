@@ -103,35 +103,43 @@ document.addEventListener('DOMContentLoaded',()=>{
     const classArray = [
         {
             "name":"Fighter",
-            "stats":[15,15,15,15,15]
+            "stats":[15,15,15,15,15],
+            "image":"https://darkanddarker.wiki.spellsandguns.com/images/f/f9/Fighters.png"
         },
         {
             "name":"Barbarian",
-            "stats":[30,11,18,6,10]
+            "stats":[30,11,18,6,10],
+            "image":"https://darkanddarker.wiki.spellsandguns.com/images/1/16/Barbarians.png"
         },
         {
             "name":"Rogue",
-            "stats":[8,35,5,12,15]
+            "stats":[8,35,5,12,15],
+            "image":"https://darkanddarker.wiki.spellsandguns.com/images/2/22/Rogues.png"
         },
         {
             "name":"Ranger",
-            "stats":[10,20,10,10,25]
+            "stats":[10,20,10,10,25],
+            "image":"https://darkanddarker.wiki.spellsandguns.com/images/1/19/Rangers.png"
         },
         {
             "name":"Wizard",
-            "stats":[6,12,20,25,12]
+            "stats":[6,12,20,25,12],
+            "image":"https://darkanddarker.wiki.spellsandguns.com/images/2/2a/Wizards.png"
         },
         {
             "name":"Cleric",
-            "stats":[11,11,30,18,5]
+            "stats":[11,11,30,18,5],
+            "image":"https://darkanddarker.wiki.spellsandguns.com/images/4/49/Clerics.png"
         },
         {
             "name":"Bard",
-            "stats":[14,14,7,20,20]
+            "stats":[14,14,7,20,20],
+            "image":"https://darkanddarker.wiki.spellsandguns.com/images/e/ee/Bards.png"
         },
         {
             "name":"Warlock",
-            "stats":[13,14,23,15,10]
+            "stats":[13,14,23,15,10],
+            "image":"https://darkanddarker.wiki.spellsandguns.com/images/1/1c/Warlocks.png"
         }
     ];
     const weaponsObjects = [
@@ -458,14 +466,17 @@ document.addEventListener('DOMContentLoaded',()=>{
                 x++
             }
             x=1
-            for(const combo of selectedWeapon.attacks2){
-                const p = document.createElement('p')
-                console.log()
-                p.textContent = "secondary attack #"+x+": "+Math.floor(((((((baseWepDmg + buff) * (combo/100) * (sweetspot)) + bonusWepDmg + divineStrike) * (1 + physPercent)) + addDmg) * (hitLocation)*(1-(physReduction*(1-armorPen))))+trueDmg)
-                
-                calculated.appendChild(p);
-                x++
+            if(attacks2){
+                for(const combo of selectedWeapon.attacks2){
+                    const p = document.createElement('p')
+                    console.log()
+                    p.textContent = "secondary attack #"+x+": "+Math.floor(((((((baseWepDmg + buff) * (combo/100) * (sweetspot)) + bonusWepDmg + divineStrike) * (1 + physPercent)) + addDmg) * (hitLocation)*(1-(physReduction*(1-armorPen))))+trueDmg)
+                    
+                    calculated.appendChild(p);
+                    x++
+                }
             }
+            
         }
     });
 
@@ -479,7 +490,12 @@ document.addEventListener('DOMContentLoaded',()=>{
         }else if(!weapon){
             alert("Please select a weapon before trying to edit or create a character")
         }else if(event.submitter.value === "create"){
-            const characterStats = calcForm.querySelectorAll('input')
+            const selectedWeapon = weaponsObjects.find((element)=> element.weapon === weapon.value);
+            const pureCharacterStats = calcForm.querySelectorAll('input')
+            const characterStats = []
+            pureCharacterStats.forEach((input)=>{
+                characterStats.push(input.value)
+            })
             fetch('http://127.0.0.1:3000/characters',{
                 method:'POST',
                 headers:{
@@ -488,11 +504,11 @@ document.addEventListener('DOMContentLoaded',()=>{
                 },
                 body:JSON.stringify({
                     name:event.target[2].value,
-                    image:event.target[3].value,
+                    image:classArray[event.target[0].value].image,
                     race:event.target[1].value,
                     class:event.target[0].value,
-                    weapon:weaponsObjects.find((element)=> element.weapon === weapon.value),
-                    stats:characterStats
+                    weapon: selectedWeapon.weapon,
+                    stats: characterStats
                 })
             })
         }else if(event.submitter.value === "patch"){
