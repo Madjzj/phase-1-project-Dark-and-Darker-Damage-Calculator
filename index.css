@@ -61,3 +61,16 @@ body{
     margin-left: auto;
     margin-right: auto;
 }
+.characterCard{
+    width: 100%;
+    align-items: center;
+    display: flex;
+}
+#saved-characters{
+    width: 100%;
+    overflow: auto;
+    height: 70vh;
+}
+.characterImage{
+    scale: 75%;
+}
