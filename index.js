@@ -116,25 +116,24 @@ function populateCharacters() {
                 radBtn.value = character.id;
                 const deleteBtn = document.createElement("button");
                 deleteBtn.textContent = "Delete";
-                
+
                 const name = document.createElement("label");
-                name.textContent = character.name
-                characterCard.appendChild(image)
-                characterCard.appendChild(name)
-                characterCard.appendChild(radBtn)
-                characterCard.appendChild(deleteBtn)
-                characterCard.classList.add("characterCard")
-                div.appendChild(characterCard)
-                deleteBtn.addEventListener("click",event => {
+                name.textContent = character.name;
+                characterCard.appendChild(image);
+                characterCard.appendChild(name);
+                characterCard.appendChild(radBtn);
+                characterCard.appendChild(deleteBtn);
+                characterCard.classList.add("characterCard");
+                div.appendChild(characterCard);
+                deleteBtn.addEventListener("click", event => {
                     div.removeChild(characterCard)
-                    fetch(`http://127.0.0.1:3000/characters/${character.id}`,{
+                    fetch(`http://127.0.0.1:3000/characters/${character.id}`, {
                         method: "DELETE",
-                        headers:{
-                            'Content-Type':'application/json',
-                            Accept:'application/json'
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Accept: 'application/json'
                         }
-                    })
-                    .then
+                    });
                 })
             }
         })
