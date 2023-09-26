@@ -100,7 +100,7 @@ function calculatePhysReduction(armorRating, physReduction) {
     return physicalReduction;
 }
 function populateCharacters() {
-    div = document.querySelector("#saved-characters")
+    const div = document.querySelector("#saved-characters")
     fetch("http://127.0.0.1:3000/characters")
         .then(response => response.json())
         .then(data => {
@@ -116,6 +116,9 @@ function populateCharacters() {
                 radBtn.value = character.id;
                 const deleteBtn = document.createElement("button");
                 deleteBtn.textContent = "Delete";
+                deleteBtn.addEventListener("click",event => {
+                    
+                })
                 const name = document.createElement("label");
                 name.textContent = character.name
                 characterCard.appendChild(image)
@@ -127,12 +130,7 @@ function populateCharacters() {
             }
         })
 }
-function deleteCharacter(){
 
-}
-function selectCharacter(){
-
-}
 document.addEventListener('DOMContentLoaded', () => {
     populateCharacters()
     const classArray = [
