@@ -103,9 +103,9 @@ function populateCharacters() {
     const div = document.querySelector("#saved-characters")
     fetch("http://127.0.0.1:3000/characters")
         .then(response => response.json())
-        .then(data => {
-            console.log(data)
-            for (const character of data) {
+        .then(characters => {
+            console.log(characters)
+            for (const character of characters) {
                 const characterCard = document.createElement("div");
                 const image = document.createElement("img");
                 image.src = character.image;
@@ -116,9 +116,7 @@ function populateCharacters() {
                 radBtn.value = character.id;
                 const deleteBtn = document.createElement("button");
                 deleteBtn.textContent = "Delete";
-                deleteBtn.addEventListener("click",event => {
-                    
-                })
+                
                 const name = document.createElement("label");
                 name.textContent = character.name
                 characterCard.appendChild(image)
@@ -127,6 +125,17 @@ function populateCharacters() {
                 characterCard.appendChild(deleteBtn)
                 characterCard.classList.add("characterCard")
                 div.appendChild(characterCard)
+                deleteBtn.addEventListener("click",event => {
+                    div.removeChild(characterCard)
+                    fetch(`http://127.0.0.1:3000/characters/${character.id}`,{
+                        method: "DELETE",
+                        headers:{
+                            'Content-Type':'application/json',
+                            Accept:'application/json'
+                        }
+                    })
+                    .then
+                })
             }
         })
 }
