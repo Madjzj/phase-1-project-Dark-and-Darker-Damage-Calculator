@@ -556,8 +556,11 @@ document.addEventListener('DOMContentLoaded', () => {
     charForm.addEventListener('submit', (event) => {
         event.preventDefault();
         const weapon = document.querySelector('input[name="weapon"]:checked')
+        const selectedCharacter = document.querySelector('input[name="character"]:checked')
         console.log(event)
-        if (event.target[0].value === "-1") {
+        if(!selectedCharacter && event.submitter.value === "patch" ){
+            alert("Please select a character to patch before patching")
+        } else if (event.target[0].value === "-1") {
             alert("Please choose a class before trying to edit or create a character")
         } else if (!weapon) {
             alert("Please select a weapon before trying to edit or create a character")
@@ -589,7 +592,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 populateCharacter(data)
             })
         } else if (event.submitter.value === "patch") {
-
+            fetch('http://127.0.0.1:3000/characters')
         }
     })
 });
