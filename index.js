@@ -100,45 +100,48 @@ function calculatePhysReduction(armorRating, physReduction) {
     return physicalReduction;
 }
 function populateCharacters() {
-    const div = document.querySelector("#saved-characters")
+   
     fetch("http://127.0.0.1:3000/characters")
         .then(response => response.json())
         .then(characters => {
             console.log(characters)
             for (const character of characters) {
-                const characterCard = document.createElement("div");
-                const image = document.createElement("img");
-                image.src = character.image;
-                image.classList.add("characterImage")
-                const radBtn = document.createElement("input");
-                radBtn.type = "radio";
-                radBtn.name = "character";
-                radBtn.value = character.id;
-                const deleteBtn = document.createElement("button");
-                deleteBtn.textContent = "Delete";
-
-                const name = document.createElement("label");
-                name.textContent = character.name;
-                characterCard.appendChild(image);
-                characterCard.appendChild(name);
-                characterCard.appendChild(radBtn);
-                characterCard.appendChild(deleteBtn);
-                characterCard.classList.add("characterCard");
-                div.appendChild(characterCard);
-                deleteBtn.addEventListener("click", event => {
-                    div.removeChild(characterCard)
-                    fetch(`http://127.0.0.1:3000/characters/${character.id}`, {
-                        method: "DELETE",
-                        headers: {
-                            'Content-Type': 'application/json',
-                            Accept: 'application/json'
-                        }
-                    });
-                })
+                populateCharacter(character)
             }
         })
 }
+function populateCharacter(character){
+    const div = document.querySelector("#saved-characters")
+    const characterCard = document.createElement("div");
+    const image = document.createElement("img");
+    image.src = character.image;
+    image.classList.add("characterImage")
+    const radBtn = document.createElement("input");
+    radBtn.type = "radio";
+    radBtn.name = "character";
+    radBtn.value = character.id;
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
 
+    const name = document.createElement("label");
+    name.textContent = character.name;
+    characterCard.appendChild(image);
+    characterCard.appendChild(name);
+    characterCard.appendChild(radBtn);
+    characterCard.appendChild(deleteBtn);
+    characterCard.classList.add("characterCard");
+    div.appendChild(characterCard);
+    deleteBtn.addEventListener("click", event => {
+        div.removeChild(characterCard)
+        fetch(`http://127.0.0.1:3000/characters/${character.id}`, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+            }
+        });
+    })
+}
 document.addEventListener('DOMContentLoaded', () => {
     populateCharacters()
     const classArray = [
@@ -565,20 +568,25 @@ document.addEventListener('DOMContentLoaded', () => {
             pureCharacterStats.forEach((input) => {
                 characterStats.push(input.value)
             })
+            const createdCharObj = {
+                name: event.target[2].value,
+                image: classArray[event.target[0].value].image,
+                race: event.target[1].value,
+                class: event.target[0].value,
+                weapon: selectedWeapon.weapon,
+                stats: characterStats
+            }
             fetch('http://127.0.0.1:3000/characters', {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",
                     Accept: "application/json"
                 },
-                body: JSON.stringify({
-                    name: event.target[2].value,
-                    image: classArray[event.target[0].value].image,
-                    race: event.target[1].value,
-                    class: event.target[0].value,
-                    weapon: selectedWeapon.weapon,
-                    stats: characterStats
-                })
+                body: JSON.stringify(createdCharObj)
+            })
+            .then( response=>response.json())
+            .then(data => {
+                populateCharacter(data)
             })
         } else if (event.submitter.value === "patch") {
 
