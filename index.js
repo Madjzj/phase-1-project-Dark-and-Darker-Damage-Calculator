@@ -150,6 +150,7 @@ function depopulateDiv(div){
         div.removeChild(div.firstChild)
     }
 }
+
 document.addEventListener('DOMContentLoaded', () => {
     populateCharacters()
     const classArray = [
@@ -635,6 +636,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 for(let x = 0; x < stats.length; x++){
                     stats[x].value = data.stats[x]
                 }
+                const selectedWeaponRadBtn = document.querySelector(`input[value="${data.weapon}"]`);
+                selectedWeaponRadBtn.checked = true
             })
         }
     })

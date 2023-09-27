@@ -2,16 +2,16 @@
   "characters": [
     {
       "name": "Madjzj",
-      "image": "https://darkanddarker.wiki.spellsandguns.com/images/f/f9/Fighters.png",
+      "image": "https://darkanddarker.wiki.spellsandguns.com/images/2/22/Rogues.png",
       "race": "1",
-      "class": "0",
-      "weapon": "Falchion",
+      "class": "2",
+      "weapon": "Castillon Dagger",
       "stats": [
+        "15",
+        "15",
+        "2",
         "0",
-        "0",
-        "0",
-        "0",
-        "0",
+        "70",
         "0",
         "0",
         "0",
