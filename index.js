@@ -150,7 +150,57 @@ function depopulateDiv(div){
         div.removeChild(div.firstChild)
     }
 }
+function populateWeaponZones(selectedWeapon){
+    const calculated = document.querySelector("#attacks-damage");
+    const weaponZones = document.querySelector("#weapon-zones");
+    const image = document.createElement("img");
+    depopulateDiv(calculated)
+    depopulateDiv(weaponZones)
+    image.src = selectedWeapon.zoneImage
+    weaponZones.appendChild(image)
+    const zoneRatios = document.createElement("div")
+    zoneRatios.id = "zone-ratios"
+    const sweetSpotDropdown = document.createElement("select")
+    x = 0;
+    for (const zone of selectedWeapon.zones) {
+        const label = document.createElement("label")
+        const option = document.createElement("option")
+        if (x === 0) {
+            label.textContent = "the green zone does " + zone + "% damage"
+            label.style.color = "green";
+            option.value = zone
+            option.textContent = "Green"
+        }
+        if (x === 1) {
+            label.textContent = "the orange zone does " + zone + "% damage"
+            label.style.color = "orange";
+            option.value = zone
+            option.textContent = "Orange"
 
+        }
+        if (x === 2) {
+            label.textContent = "the red zone does " + zone + "% damage"
+            label.style.color = "red";
+            option.value = zone
+            option.textContent = "Red"
+
+        }
+        x++;
+        label.id = "ratio"
+        sweetSpotDropdown.appendChild(option)
+        zoneRatios.appendChild(label)
+    }
+    const divider = document.createElement("div")
+    const sweetSpotLabel = document.createElement("label")
+    sweetSpotLabel.textContent = "where are you hitting"
+    sweetSpotDropdown.id = "sweetspot-dropdown"
+    weaponZones.appendChild(zoneRatios)
+    divider.appendChild(sweetSpotLabel)
+    divider.appendChild(sweetSpotDropdown)
+    divider.appendChild(createBodyDropdown())
+    divider.id = "sweetspot-divider"
+    weaponZones.appendChild(divider)
+}
 document.addEventListener('DOMContentLoaded', () => {
     populateCharacters()
     const classArray = [
@@ -429,6 +479,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let selectedClass;
     const weapons = document.getElementById("weapon-display");
     classDropdown.addEventListener('change', (event) => {
+        
         selectedClass = event.target.value;
         let className
         if (selectedClass >= 0) {
@@ -449,56 +500,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (event.target.type === "radio") {
                 const selectedWeapon = weaponsObjects.find((element) => element.weapon === event.target.value);
-
-                const image = document.createElement("img");
-                depopulateDiv(calculated)
-                depopulateDiv(weaponZones)
-                image.src = selectedWeapon.zoneImage
-                weaponZones.appendChild(image)
-                const zoneRatios = document.createElement("div")
-                zoneRatios.id = "zone-ratios"
-                const sweetSpotDropdown = document.createElement("select")
-                x = 0;
-                for (const zone of selectedWeapon.zones) {
-                    const label = document.createElement("label")
-                    const option = document.createElement("option")
-                    if (x === 0) {
-                        label.textContent = "the green zone does " + zone + "% damage"
-                        label.style.color = "green";
-                        option.value = zone
-                        option.textContent = "Green"
-                    }
-                    if (x === 1) {
-                        label.textContent = "the orange zone does " + zone + "% damage"
-                        label.style.color = "orange";
-                        option.value = zone
-                        option.textContent = "Orange"
-
-                    }
-                    if (x === 2) {
-                        label.textContent = "the red zone does " + zone + "% damage"
-                        label.style.color = "red";
-                        option.value = zone
-                        option.textContent = "Red"
-
-                    }
-                    x++;
-                    label.id = "ratio"
-                    sweetSpotDropdown.appendChild(option)
-                    zoneRatios.appendChild(label)
-                }
-                const divider = document.createElement("div")
-                const sweetSpotLabel = document.createElement("label")
-                sweetSpotLabel.textContent = "where are you hitting"
-                sweetSpotDropdown.id = "sweetspot-dropdown"
-                weaponZones.appendChild(zoneRatios)
-                divider.appendChild(sweetSpotLabel)
-                divider.appendChild(sweetSpotDropdown)
-                divider.appendChild(createBodyDropdown())
-                divider.id = "sweetspot-divider"
-                weaponZones.appendChild(divider)
+                populateWeaponZones(selectedWeapon,weaponZones)
+                
             }
+           
         })
+        
         depopulateDiv(weaponZones)
     });
     const calcForm = document.querySelector("#stats-form")
@@ -622,22 +629,20 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(data => {
                 console.log(data)
+                const change = new Event('change')
                 charName = document.querySelector('input[type="text"]')
                 charName.value = data.name
                 stats = document.querySelectorAll('input[type="number"]')
-                depopulateDiv(weapons)
-                document.querySelector("#class-dropdown").value = data.class
+                classDropdown.value = data.class
                 document.querySelector("#race-dropdown").value = data.race
-                for (const weapon of weaponsObjects) {
-                    if (weapon.class.includes(classArray[data.class].name)) {
-                        weapons.appendChild(populateWeapon(weapon))
-                    }
-                }
+                classDropdown.dispatchEvent(change)
                 for(let x = 0; x < stats.length; x++){
                     stats[x].value = data.stats[x]
                 }
                 const selectedWeaponRadBtn = document.querySelector(`input[value="${data.weapon}"]`);
                 selectedWeaponRadBtn.checked = true
+                const selectedWeapon = weaponsObjects.find((element) => element.weapon === data.weapon);
+                populateWeaponZones(selectedWeapon)
             })
         }
     })
