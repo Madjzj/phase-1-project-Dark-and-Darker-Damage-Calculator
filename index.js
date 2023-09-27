@@ -145,6 +145,11 @@ function populateCharacter(character){
         })
     })
 }
+function depopulateDiv(div){
+    while(div.firstChild){
+        div.removeChild(div.firstChild)
+    }
+}
 document.addEventListener('DOMContentLoaded', () => {
     populateCharacters()
     const classArray = [
@@ -431,12 +436,8 @@ document.addEventListener('DOMContentLoaded', () => {
             className = "N/A"
         }
         const calculated = document.querySelector("#attacks-damage");
-        while (calculated.firstChild) {
-            calculated.removeChild(calculated.firstChild);
-        }
-        while (weapons.firstChild) {
-            weapons.removeChild(weapons.firstChild)
-        }
+        depopulateDiv(calculated)
+        depopulateDiv(weapons)
         for (const weapon of weaponsObjects) {
             if (weapon.class.includes(className)) {
                 weapons.appendChild(populateWeapon(weapon))
@@ -449,12 +450,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const selectedWeapon = weaponsObjects.find((element) => element.weapon === event.target.value);
 
                 const image = document.createElement("img");
-                while (calculated.firstChild) {
-                    calculated.removeChild(calculated.firstChild);
-                }
-                while (weaponZones.firstChild) {
-                    weaponZones.removeChild(weaponZones.firstChild)
-                }
+                depopulateDiv(calculated)
+                depopulateDiv(weaponZones)
                 image.src = selectedWeapon.zoneImage
                 weaponZones.appendChild(image)
                 const zoneRatios = document.createElement("div")
@@ -501,9 +498,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 weaponZones.appendChild(divider)
             }
         })
-        while (weaponZones.firstChild) {
-            weaponZones.removeChild(weaponZones.firstChild)
-        }
+        depopulateDiv(weaponZones)
     });
     const calcForm = document.querySelector("#stats-form")
     calcForm.addEventListener('submit', (event) => {
@@ -605,4 +600,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })
 
+    const savedCharacters = document.querySelector("#saved-characters")
+    savedCharacters.addEventListener("change",(event)=>{
+        if (event.target.type === "radio") {
+            fetch(`http://127.0.0.1:3000/characters/${event.target.value}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                inputs = document.querySelectorAll('input')
+                console.log(inputs)
+            })
+        }
+    })
 });
