@@ -40,76 +40,80 @@
                 <div>
                     <div class="character-creation">
                         <label>Character Name</label>
-                        <input id="char-name"/>
+                        <input id="char-name" type="text"/>
                     </div>
                     <div class="character-creation">
                         <button id="create-char" type="submit" value="create">Create</button>
                         <button id="patch-char" type="submit" value="patch">Patch</button>
                     </div>
-                </form>
+                
                     <label>Saved Characters</label>
                 </div>
-                <div id="saved-characters">
-                </div>
+            </form>
+            <div id="saved-characters">
+            </div>  
         </div>
+
         <div id="weapon-container" class="container">
             <h3>Pick your weapon</h3>
             <div id="weapon-display"></div>
         </div>
+
         <div id="stat-container" class="container">
             <h3>Enter your stats</h3>
             <form id="stats-form">
                 <div class="stat-input">
                     <label>Base Weapon Damage</label>
-                    <input id="base-wep-dmg" value=0 name="BaseWepDmg" />
+                    <input id="base-wep-dmg" value=0 name="BaseWepDmg" type="number"/>
                 </div>
                 <div class="stat-input">
                     <label>+ Strength</label>
-                    <input id="+-str" value=0 name = "+Str" />
+                    <input id="+-str" value=0 name = "+Str" type="number"/>
                 </div>
                 <div class="stat-input">
                     <label>+ All Atributes</label>
-                    <input id="+-all" value=0 name = "+All" />
+                    <input id="+-all" value=0 name = "+All" type="number"/>
                 </div>
                 <div class="stat-input">
                     <label>+ Physical Power</label>
-                    <input id="+-phys-pow" value=0 name = "+PhysPow" />
+                    <input id="+-phys-pow" value=0 name = "+PhysPow" type="number"/>
                 </div>
                 <div class="stat-input">
                     <label>+ Physical Damage %</label>
-                    <input id="+-phys-dmg" value=0 name = "+PhysDmg" />
+                    <input id="+-phys-dmg" value=0 name = "+PhysDmg" type="number"/>
                 </div>
                 <div class="stat-input">
                     <label>+ Weapon Damage</label>
-                    <input id="+-wep-dmg" value=0 name = "+WepDmg" />
+                    <input id="+-wep-dmg" value=0 name = "+WepDmg" type="number"/>
                 </div>
                 <div class="stat-input">
                     <label>Additional Physical Damage</label>
-                    <input id="add-wep-dmg" value=0 name = "AddWepDmg" />
+                    <input id="add-wep-dmg" value=0 name = "AddWepDmg" type="number"/>
                 </div>
                 
                 <div class="stat-input">
                     <label>True Physical Damage</label>
-                    <input id="true-phys-dmg" value=0 name = "TruePhysDmg" />
+                    <input id="true-phys-dmg" value=0 name = "TruePhysDmg" type="number"/>
                 </div>
                 <div class="stat-input">
                     <label>Armor Penetration</label>
-                    <input id="armor-pen" value=0 name = "ArmorPen" />
+                    <input id="armor-pen" value=0 name = "ArmorPen" type="number"/>
                 </div>
                 <h4>Target's Stats</h4>
                 <div class="stat-input">
                     <label>Armor</label>
-                    <input id="armor" value=0 name = "Armor" />
+                    <input id="armor" value=0 name = "Armor" type="number"/>
                 </div>
                 <div class="stat-input">
                     <label>Physical Damage Reduction</label>
-                    <input id="phys-dmg-reduction" value=0 name = "PhysDmgReduction" />
+                    <input id="phys-dmg-reduction" value=0 name = "PhysDmgReduction" type="number"/>
                 </div>
                 <div>
                     <button id="calculate" type="submit">Calculate</button>
                 </div>
             </form>
         </div>
+
         <div id= "damage-container" class="container">
             <h3>Damage to target</h3>
             <div id="weapon-zones"></div>

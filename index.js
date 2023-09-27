@@ -521,9 +521,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let x = 1;
             const selectedWeapon = weaponsObjects.find((element) => element.weapon === weapon.value);
             const calculated = document.querySelector("#attacks-damage");
-            while (calculated.firstChild) {
-                calculated.removeChild(calculated.firstChild);
-            }
+            depopulateDiv(calculated)
             for (const combo of selectedWeapon.attacks) {
                 const p = document.createElement('p')
                 p.textContent = "attack #" + x + ": " + Math.floor(((((((baseWepDmg + buff) * (combo / 100) * (sweetspot)) + bonusWepDmg + divineStrike) * (1 + physPercent)) + addDmg) * (hitLocation) * (1 - (physReduction * (1 - armorPen)))) + trueDmg)
@@ -586,6 +584,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert("Please run the JSON file if you wish to save characters")
             })
         } else if (event.submitter.value === "patch") {
+            const selectedWeapon = weaponsObjects.find((element) => element.weapon === weapon.value);
+            const pureCharacterStats = calcForm.querySelectorAll('input')
+            const characterStats = []
+            pureCharacterStats.forEach((input) => {
+                characterStats.push(input.value)
+            })
+            const createdCharObj = {
+                name: event.target[2].value,
+                image: classArray[event.target[0].value].image,
+                race: event.target[1].value,
+                class: event.target[0].value,
+                weapon: selectedWeapon.weapon,
+                stats: characterStats
+            }
             fetch(`http://127.0.0.1:3000/characters/${selectedCharacter.value}`,{
                 method: 'PATCH',
                 headers: {
@@ -607,8 +619,20 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(response => response.json())
             .then(data => {
                 console.log(data)
-                inputs = document.querySelectorAll('input')
-                console.log(inputs)
+                charName = document.querySelector('input[type="text"]')
+                charName.value = data.name
+                stats = document.querySelectorAll('input[type="number"]')
+                depopulateDiv(weapons)
+                document.querySelector("#class-dropdown").value = data.class
+                document.querySelector("#race-dropdown").value = data.race
+                for (const weapon of weaponsObjects) {
+                    if (weapon.class.includes(classArray[data.class].name)) {
+                        weapons.appendChild(populateWeapon(weapon))
+                    }
+                }
+                for(let x = 0; x < stats.length; x++){
+                    stats[x].value = data.stats[x]
+                }
             })
         }
     })
