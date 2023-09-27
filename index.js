@@ -609,6 +609,8 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error=>{
                 console.log("Error:",error.message)
             })
+            const charCard = selectedCharacter.closest('div')
+            charCard.querySelector("img").src = classArray[event.target[0].value].image
         }
     })
 
