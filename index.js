@@ -619,6 +619,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             const charCard = selectedCharacter.closest('div')
             charCard.querySelector("img").src = classArray[event.target[0].value].image
+            charCard.querySelector("label").textContent = createdCharObj.name
         }
     })
 
@@ -630,7 +631,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 console.log(data)
                 const change = new Event('change')
-                charName = document.querySelector('input[type="text"]')
+                const charName = document.querySelector('input[type="text"]')
                 charName.value = data.name
                 stats = document.querySelectorAll('input[type="number"]')
                 classDropdown.value = data.class
