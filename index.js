@@ -530,7 +530,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 x++
             }
             x = 1
-            if (attacks2) {
+            if (selectedWeapon.hasOwnProperty("attacks2")) {
                 for (const combo of selectedWeapon.attacks2) {
                     const p = document.createElement('p')
                     p.textContent = "secondary attack #" + x + ": " + Math.floor(((((((baseWepDmg + buff) * (combo / 100) * (sweetspot)) + bonusWepDmg + divineStrike) * (1 + physPercent)) + addDmg) * (hitLocation) * (1 - (physReduction * (1 - armorPen)))) + trueDmg)
@@ -547,7 +547,6 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault();
         const weapon = document.querySelector('input[name="weapon"]:checked')
         const selectedCharacter = document.querySelector('input[name="character"]:checked')
-        console.log(event)
         if(!selectedCharacter && event.submitter.value === "patch" ){
             alert("Please select a character to patch before patching")
         } else if (event.target[0].value === "-1") {
