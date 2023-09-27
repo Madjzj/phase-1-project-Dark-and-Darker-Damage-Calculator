@@ -62,7 +62,6 @@ function calculatePhysReduction(armorRating, physReduction) {
     let physicalReduction = -619;
     physicalReduction += physReduction;
     for (let x = -300; x < armorRating; x++) {
-        console.log("lesdoit")
         if (x < -3) {
             physicalReduction += 2;
         } else if (x < 22) {
@@ -96,7 +95,6 @@ function calculatePhysReduction(armorRating, physReduction) {
             return 85;
         }
     }
-    console.log(physReduction)
     return physicalReduction;
 }
 function populateCharacters() {
@@ -104,7 +102,6 @@ function populateCharacters() {
     fetch("http://127.0.0.1:3000/characters")
         .then(response => response.json())
         .then(characters => {
-            console.log(characters)
             for (const character of characters) {
                 populateCharacter(character)
             }
@@ -505,7 +502,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const calcForm = document.querySelector("#stats-form")
     calcForm.addEventListener('submit', (event) => {
         event.preventDefault();
-        console.log(event)
         const weapon = document.querySelector('input[name="weapon"]:checked')
         if (weapon) {
             //The formula is ((((((Base Weapon/Magical Damage + "Buff" Weapon Damage) * Combo Bonus * Impact Zone Bonus) + "Gear" Weapon Damage/Magical Damage + Divine Strike Damage) * (1 + Power Bonus)) + Additional Damage) * (1 + Hit Location Bonus) * (1 - (Damage Reduction * (1 - Penetration))) * (1 - Projectile Reduction)) + True Damage
@@ -523,17 +519,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const buff = 0;
             let x = 1;
             const selectedWeapon = weaponsObjects.find((element) => element.weapon === weapon.value);
-            console.log(selectedWeapon.attacks)
             const calculated = document.querySelector("#attacks-damage");
             while (calculated.firstChild) {
                 calculated.removeChild(calculated.firstChild);
             }
-            console.log(calculatePhysPercent(powerBonus))
             for (const combo of selectedWeapon.attacks) {
                 const p = document.createElement('p')
-                console.log()
                 p.textContent = "attack #" + x + ": " + Math.floor(((((((baseWepDmg + buff) * (combo / 100) * (sweetspot)) + bonusWepDmg + divineStrike) * (1 + physPercent)) + addDmg) * (hitLocation) * (1 - (physReduction * (1 - armorPen)))) + trueDmg)
-
                 calculated.appendChild(p);
                 x++
             }
@@ -541,9 +533,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (attacks2) {
                 for (const combo of selectedWeapon.attacks2) {
                     const p = document.createElement('p')
-                    console.log()
                     p.textContent = "secondary attack #" + x + ": " + Math.floor(((((((baseWepDmg + buff) * (combo / 100) * (sweetspot)) + bonusWepDmg + divineStrike) * (1 + physPercent)) + addDmg) * (hitLocation) * (1 - (physReduction * (1 - armorPen)))) + trueDmg)
-
                     calculated.appendChild(p);
                     x++
                 }
@@ -592,7 +582,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 populateCharacter(data)
             })
         } else if (event.submitter.value === "patch") {
-            fetch('http://127.0.0.1:3000/characters')
+            fetch(`http://127.0.0.1:3000/characters/${selectedCharacter.value}`,{
+                method: 'PATCH',
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json"
+                },
+                body: JSON.stringify(createdCharObj)
+        })
         }
     })
 });
