@@ -106,6 +106,9 @@ function populateCharacters() {
                 populateCharacter(character)
             }
         })
+        .catch(error=>{
+            console.log("Error:",error.message)
+        })
 }
 function populateCharacter(character){
     const div = document.querySelector("#saved-characters")
@@ -136,7 +139,10 @@ function populateCharacter(character){
                 'Content-Type': 'application/json',
                 Accept: 'application/json'
             }
-        });
+        })
+        .catch(error=>{
+            console.log("Error:",error.message)
+        })
     })
 }
 document.addEventListener('DOMContentLoaded', () => {
@@ -580,6 +586,10 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 populateCharacter(data)
             })
+            .catch(error=>{
+                console.log("Error:",error.message)
+                alert("Please run the JSON file if you wish to save characters")
+            })
         } else if (event.submitter.value === "patch") {
             fetch(`http://127.0.0.1:3000/characters/${selectedCharacter.value}`,{
                 method: 'PATCH',
@@ -588,7 +598,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     Accept: "application/json"
                 },
                 body: JSON.stringify(createdCharObj)
-        })
+            })
+            .catch(error=>{
+                console.log("Error:",error.message)
+            })
         }
     })
+
 });
