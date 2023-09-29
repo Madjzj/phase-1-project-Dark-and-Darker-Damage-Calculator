@@ -645,6 +645,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const selectedWeapon = weaponsObjects.find((element) => element.weapon === data.weapon);
                 populateWeaponZones(selectedWeapon)
             })
+            .catch(error=>{
+                console.log("Error:",error.message)
+            })
         }
     })
 });
