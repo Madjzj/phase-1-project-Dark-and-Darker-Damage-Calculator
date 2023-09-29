@@ -99,7 +99,7 @@ function calculatePhysReduction(armorRating, physReduction) {
 }
 function populateCharacters() {
    
-    fetch("http://127.0.0.1:3000/characters")
+    fetch("http://localhost:3000/characters")
         .then(response => response.json())
         .then(characters => {
             for (const character of characters) {
@@ -133,7 +133,7 @@ function populateCharacter(character){
     div.appendChild(characterCard);
     deleteBtn.addEventListener("click", event => {
         div.removeChild(characterCard)
-        fetch(`http://127.0.0.1:3000/characters/${character.id}`, {
+        fetch(`http://localhost:3000/characters/${character.id}`, {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',
@@ -575,7 +575,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 weapon: selectedWeapon.weapon,
                 stats: characterStats
             }
-            fetch('http://127.0.0.1:3000/characters', {
+            fetch('http://localhost:3000/characters', {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",
@@ -606,7 +606,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 weapon: selectedWeapon.weapon,
                 stats: characterStats
             }
-            fetch(`http://127.0.0.1:3000/characters/${selectedCharacter.value}`,{
+            fetch(`http://localhost:3000/characters/${selectedCharacter.value}`,{
                 method: 'PATCH',
                 headers: {
                     "Content-Type": "application/json",
@@ -626,7 +626,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedCharacters = document.querySelector("#saved-characters")
     savedCharacters.addEventListener("change",(event)=>{
         if (event.target.type === "radio") {
-            fetch(`http://127.0.0.1:3000/characters/${event.target.value}`)
+            fetch(`http://localhost:3000/characters/${event.target.value}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data)
