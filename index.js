@@ -475,6 +475,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
     ];
+    const raceArray = [0,1,-1,0]
     const classDropdown = document.querySelector("#class-dropdown");
     let selectedClass;
     const weapons = document.getElementById("weapon-display");
@@ -516,7 +517,7 @@ document.addEventListener('DOMContentLoaded', () => {
             //The formula is ((((((Base Weapon/Magical Damage + "Buff" Weapon Damage) * Combo Bonus * Impact Zone Bonus) + "Gear" Weapon Damage/Magical Damage + Divine Strike Damage) * (1 + Power Bonus)) + Additional Damage) * (1 + Hit Location Bonus) * (1 - (Damage Reduction * (1 - Penetration))) * (1 - Projectile Reduction)) + True Damage
             const baseWepDmg = Number(event.target[0].value);
             const bonusWepDmg = Number(event.target[5].value);
-            const powerBonus = Number(event.target[1].value) + Number(event.target[2].value) + Number(event.target[3].value) + classArray[selectedClass].stats[0] + Number(document.querySelector("#race-dropdown").name)
+            const powerBonus = Number(event.target[1].value) + Number(event.target[2].value) + Number(event.target[3].value) + classArray[selectedClass].stats[0] + raceArray[Number(document.querySelector("#race-dropdown").value)]
             const addDmg = Number(event.target[6].value);
             const hitLocation = Number(document.querySelector("#body-dropdown").value);
             const physPercent = ((calculatePhysPercent(powerBonus)) + Number(event.target[4].value)) / 100;
