@@ -90,8 +90,10 @@ function calculatePhysReduction(armorRating, physReduction) {
             physicalReduction += .025;
         } else if (x < 500) {
             physicalReduction += .02;
+        } else if (x >= 500){
+            return physReduction;
         }
-        if (physicalReduction > 85) {
+        if (physicalReduction >= 85) {
             return 85;
         }
     }
@@ -351,7 +353,7 @@ document.addEventListener('DOMContentLoaded', () => {
             image: "https://darkanddarker.wiki.spellsandguns.com/images/thumb/d/d6/Kris_Dagger_2.png/60px-Kris_Dagger_2.png",
             class: ["Rogue"],
             type: "Dagger",
-            attacks: [100, 105, 105, 105],
+            attacks: [100, 110, 110],
             zones: [100],
             zoneImage: "https://darkanddarker.wiki.spellsandguns.com/images/0/00/Kris_Dagger_Hitbox.png"
         },
@@ -534,6 +536,7 @@ document.addEventListener('DOMContentLoaded', () => {
             for (const combo of selectedWeapon.attacks) {
                 const p = document.createElement('p')
                 p.textContent = "attack #" + x + ": " + Math.floor(((((((baseWepDmg + buff) * (combo / 100) * (sweetspot)) + bonusWepDmg + divineStrike) * (1 + physPercent)) + addDmg) * (hitLocation) * (1 - (physReduction * (1 - armorPen)))) + trueDmg)
+                console.log("attack #" + x + ": " + (((((((baseWepDmg + buff) * (combo / 100) * (sweetspot)) + bonusWepDmg + divineStrike) * (1 + physPercent)) + addDmg) * (hitLocation) * (1 - (physReduction * (1 - armorPen)))) + trueDmg))
                 calculated.appendChild(p);
                 x++
             }
@@ -586,12 +589,14 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .then( response=>response.json())
             .then(data => {
+                console.log(5)
                 populateCharacter(data)
             })
             .catch(error=>{
                 console.log("Error:",error.message)
                 alert("Please run the JSON file if you wish to save characters")
             })
+            console.log(20)
         } else if (event.submitter.value === "patch") {
             const selectedWeapon = weaponsObjects.find((element) => element.weapon === weapon.value);
             const pureCharacterStats = calcForm.querySelectorAll('input')
